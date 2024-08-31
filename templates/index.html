@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% import "macro.html" as macro %}
+
+{% block title %} {{super()}}  Bienvenida {% endblock %}
+    <!--Este codigo lo que hace es validar si la ip del usuario existe o contiene algo si es asi muestra el mensaje
+    si no le muestra un link para que lo redireccione al inicio y caputre la ip y la guarde en la cookie-->
+    {% block body %}
+    {% if user_ip %}
+    <h3>Hola jugador tu ip es {{ user_ip }}</h3>
+    {% else %}
+    <a href="{{ url_for('index') }}">Ir a inicio</a>
+    {% endif %}
+
+        <ul>
+        {% for todo in todos %}
+           {{ macro.render_todo(todo) }}
+            {% endfor %}
+        </ul>
+{% endblock %}
