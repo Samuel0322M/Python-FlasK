@@ -1,11 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %} Flask Platzi | {% endblock %} </title>
-</head>
-<body>
-    {% block body %}  {% endblock %}
-</body>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {% block styles %}
+        <!-- Bootstrap CSS -->
+        {{ bootstrap.load_css() }}
+    {% endblock %}
+
+    <title>
+        {% block title %}Flask Platzi |{% endblock %}
+    </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Style/style.css') }}">
+
+    {% block head_extras %}{% endblock %}
+  </head>
+  <body>
+    {% block navbar %}
+        {% include "navbar.html" %}
+    {% endblock %}
+
+    {% block content %}{% endblock %}
+
+    {% block scripts %}
+        <!-- Optional JavaScript -->
+        {{ bootstrap.load_js() }}
+    {% endblock %}
+  </body>
 </html>
