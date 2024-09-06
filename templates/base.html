@@ -1,32 +1,21 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% extends 'bootstrap/base.html' %}
 
-    {% block styles %}
-        <!-- Bootstrap CSS -->
-        {{ bootstrap.load_css() }}
-    {% endblock %}
-
+{% block head %}
+{{super()}}
     <title>
         {% block title %}Flask Platzi |{% endblock %}
     </title>
     <link rel="stylesheet" href="{{ url_for('static', filename='Style/style.css') }}">
+    {% endblock %}
 
-    {% block head_extras %}{% endblock %}
-  </head>
-  <body>
-    {% block navbar %}
+    {% block body %}
+
+      {% block navbar %}
         {% include "navbar.html" %}
-    {% endblock %}
+      {% endblock %}
 
-    {% block content %}{% endblock %}
-
-    {% block scripts %}
-        <!-- Optional JavaScript -->
-        {{ bootstrap.load_js() }}
+      {% block content %}{% endblock %}
+      
     {% endblock %}
-  </body>
-</html>
+ 
+

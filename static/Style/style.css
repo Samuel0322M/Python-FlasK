@@ -5,3 +5,50 @@ html * {
 img {
     max-width: 30px;
 }
+
+h1  {
+    margin: 10px;
+}
+
+p  {
+    margin: 10px;
+}
+
+
+  .navbar-default {
+    background-color: #000; /* Fondo negro */
+    border-color: #000; /* Borde negro */
+  }
+
+  .navbar-default .navbar-brand {
+    color: #fff; /* Texto blanco */
+  }
+
+  .navbar-default .navbar-brand:hover,
+  .navbar-default .navbar-brand:focus {
+    color: #ccc; /* Color del texto al pasar el cursor */
+  }
+
+  .navbar-default .navbar-nav > li > a {
+    color: #fff; /* Texto blanco */
+  }
+
+  .navbar-default .navbar-nav > li > a:hover,
+  .navbar-default .navbar-nav > li > a:focus {
+    color: #ccc; /* Color del texto al pasar el cursor */
+  }
+
+  .navbar-default .navbar-nav > .active > a,
+  .navbar-default .navbar-nav > .active > a:hover,
+  .navbar-default .navbar-nav > .active > a:focus {
+    color: #fff; /* Texto blanco para la opción activa */
+    background-color: #080808; /* Fondo gris oscuro para la opción activa */
+  }
+
+  .navbar-default .navbar-toggle {
+    border-color: #fff; /* Borde blanco del botón de toggle en móvil */
+  }
+
+  .navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff; /* Iconos del botón de toggle en blanco */
+  }

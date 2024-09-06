@@ -1,16 +1,23 @@
 {% extends "base.html" %}
 {% import "macro.html" as macro %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
 {% block title %} {{super()}}  Bienvenida {% endblock %}
     <!--Este codigo lo que hace es validar si la ip del usuario existe o contiene algo si es asi muestra el mensaje
     si no le muestra un link para que lo redireccione al inicio y caputre la ip y la guarde en la cookie-->
-    {% block body %}
+    {% block content %}
     {% if user_ip %}
     <h3>Hola jugador tu ip es {{ user_ip }}</h3>
     {% else %}
     <a href="{{ url_for('index') }}">Ir a inicio</a>
     {% endif %}
-
+        <div class="container">
+           <!--  <form action="{{ url_for('hello') }}" method="post">
+                {{ login_form.username }}
+                {{ login_form.username.label }}
+             </form> -->
+             {{wtf.quick_form(login_form) }}
+        </div>
         <ul>
         {% for todo in todos %}
            {{ macro.render_todo(todo) }}

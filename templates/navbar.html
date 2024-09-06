@@ -1,46 +1,46 @@
-<!--
+<!--</nav>
 <nav>
     <ul>
         <img src="{{ url_for ('static', filename= '/images/logo.jpg')}}", alt="fondo">
         <li><a href=" {{ url_for('index') }}"> ir a inicio</a></li>
         <li><a href="https://www.chess.com/home" target="_blank">ir a ajedrez</a></li>
     </ul>
-</nav>
--->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    </nav>-->
+
+<nav class="navbar navbar-default">
     <div class="container-fluid">
-        <img class="navbar-brand" src="{{ url_for('static', filename='/images/logo.jpg')}}" alt="fondo">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">ir a inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://www.chess.com/home" target="_blank">ir a ajedrez</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                </li>
-            </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
-    </div>
-</nav>
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+          <img alt="Brand" src="{{ url_for ('static', filename= '/images/logo.jpg')}}">
+        </a>
+      </div>
+  
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="{{ url_for('index') }}">Inicio <span class="sr-only">(current)</span></a></li>
+          <li><a href="https://www.chess.com/home">Ajedrez</a></li>
+        </ul>
+    <!-- <form class="navbar-form navbar-left">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form> -->
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="https://www.youtube.com">Youtube</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hit del momento<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="https://www.youtube.com/watch?v=wc3Um-SGPbQ">Sorry not sorry</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li><a href="#">Separated link</a></li>
+            </ul> 
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
 
