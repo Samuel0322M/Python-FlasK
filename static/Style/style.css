@@ -7,11 +7,16 @@ img {
 }
 
 h1  {
+    text-align: center;
     margin: 10px;
 }
 
 p  {
     margin: 10px;
+}
+
+h2 {
+  text-align: center;
 }
 
 

@@ -6,8 +6,11 @@
     <!--Este codigo lo que hace es validar si la ip del usuario existe o contiene algo si es asi muestra el mensaje
     si no le muestra un link para que lo redireccione al inicio y caputre la ip y la guarde en la cookie-->
     {% block content %}
+    {% if username %}
+        <h1>Bienvendio  {{username | capitalize  }} </h1>
+    {% endif %}
     {% if user_ip %}
-    <h3>Hola jugador tu ip es {{ user_ip }}</h3>
+    <h2>Hola jugador tu ip es {{ user_ip }}</h2>
     {% else %}
     <a href="{{ url_for('index') }}">Ir a inicio</a>
     {% endif %}

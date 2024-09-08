@@ -1,16 +1,16 @@
 #flask con f minuscula es la extension, Flask es la clase que nos permite crear instancias de flask
-from flask import Flask, request, make_response, redirect, render_template, abort, session
+from flask import Flask, request, make_response, redirect, render_template, abort, session, url_for, flash, get_flashed_messages
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
 from wtforms.fields import StringField, PasswordField, SubmitField
 from wtforms.validators import data_required
-
+import unittest
 #crear una nueva instancia de flask declaramos una variable llamada app y mandar llamar la clase flask para crear una nueva instancia
 app = Flask(__name__)
 #de esta forma se inicializa bootstrap
 Bootstrap = Bootstrap(app)
 #se puede hacer el debug
-app.debug = "true"
+app.debug = True
 
 app.config['SECRET_KEY'] = 'SUPER SECRETO'
 
@@ -21,8 +21,10 @@ class loginForm(FlaskForm):
     password = PasswordField('Password', [data_required()])
     submit = SubmitField('Enviar')
 
-
-
+@app.cli.command()
+def test():
+    tests = unittest.TestLoader().discover('tests')
+    unittest.TextTestRunner().run(tests)
 
 @app.route('/error')
 def internal_error():
@@ -46,17 +48,24 @@ def index():
 
     return response
 
-@app.route("/hello")
+@app.route("/hello", methods=['GET', 'POST'])
 def hello():
     #creamos una bariable user_ip que va a tener el valor de la ip que detectamos en el request, 
     #request tiene una propiedad llamdaa request addr que es igual a la ip del usuario
     user_ip = session.get("user_ip")
     login_form = loginForm()
+    username = session.get('username')
     context = {
         "user_ip":user_ip,
         "todos": todos,
-        'login_form': login_form
+        'login_form': login_form,
+        'username': username
     }
+    if login_form.validate_on_submit():
+        username = login_form.username.data
+        session['username'] = username
+        flash('El usuario ' + username + ' se ha registrado con exito')
+        return redirect(url_for('hello'))
 
     return render_template("index.html", **context)
 
