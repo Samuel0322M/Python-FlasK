@@ -7,7 +7,7 @@
     si no le muestra un link para que lo redireccione al inicio y caputre la ip y la guarde en la cookie-->
     {% block content %}
     {% if username %}
-        <h1>Bienvendio  {{username | capitalize  }} </h1>
+        <h1>Bienvenido  {{username | capitalize  }} </h1>
     {% endif %}
     {% if user_ip %}
     <h2>Hola jugador tu ip es {{ user_ip }}</h2>
@@ -21,6 +21,7 @@
              </form> -->
              {{wtf.quick_form(login_form) }}
         </div>
+        <br>
         <ul>
         {% for todo in todos %}
            {{ macro.render_todo(todo) }}
