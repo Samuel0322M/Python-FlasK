@@ -1,8 +1,7 @@
 #flask con f minuscula es la extension, Flask es la clase que nos permite crear instancias de flask
-from flask import Flask, request, make_response, redirect, render_template, abort, session, url_for, flash, get_flashed_messages
-from flask_bootstrap import Bootstrap
-
+from flask import request, make_response, redirect, render_template, session, url_for, flash, abort, redirect
 import unittest
+
 from app import create_app
 from app.forms import loginForm
 #crear una nueva instancia de flask declaramos una variable llamada app y mandar llamar la clase flask para crear una nueva instancia
@@ -56,7 +55,7 @@ def hello():
         username = login_form.username.data
         session['username'] = username
         flash('El usuario ' + username + ' se ha registrado con exito')
-        return redirect(url_for('hello'))
+        return redirect(url_for('index'))
 
     return render_template("index.html", **context)
 

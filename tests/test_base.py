@@ -1,13 +1,13 @@
 from flask_testing import TestCase
 from flask import current_app, url_for
-from app import create_app
+from main import app
 
 class MainTest(TestCase):
     def create_app(self):
-        create_app.config['TESTING'] = True
-        create_app.config['WTF_CSRF_ENABLED'] = False
+        app.config['TESTING'] = True
+        app.config['WTF_CSRF_ENABLED'] = False
 
-        return create_app
+        return app
     
     def test_app_exists(self):
         self.assertIsNotNone(current_app)
