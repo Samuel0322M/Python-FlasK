@@ -1,25 +1,16 @@
 #flask con f minuscula es la extension, Flask es la clase que nos permite crear instancias de flask
 from flask import Flask, request, make_response, redirect, render_template, abort, session, url_for, flash, get_flashed_messages
 from flask_bootstrap import Bootstrap
-from flask_wtf import FlaskForm
-from wtforms.fields import StringField, PasswordField, SubmitField
-from wtforms.validators import data_required
-import unittest
-#crear una nueva instancia de flask declaramos una variable llamada app y mandar llamar la clase flask para crear una nueva instancia
-app = Flask(__name__)
-#de esta forma se inicializa bootstrap
-Bootstrap = Bootstrap(app)
-#se puede hacer el debug
-app.debug = True
 
-app.config['SECRET_KEY'] = 'SUPER SECRETO'
+import unittest
+from app import create_app
+from app.forms import loginForm
+#crear una nueva instancia de flask declaramos una variable llamada app y mandar llamar la clase flask para crear una nueva instancia
+
+app = create_app()
 
 todos = ["Comprar chaqueta", "Sonic Frontiers", "Mando xbox"]
 
-class loginForm(FlaskForm):
-    username = StringField('Nombre de usuario', validators=[data_required()])
-    password = PasswordField('Password', [data_required()])
-    submit = SubmitField('Enviar')
 
 @app.cli.command()
 def test():
