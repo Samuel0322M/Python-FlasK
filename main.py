@@ -38,25 +38,18 @@ def index():
 
     return response
 
-@app.route("/hello", methods=['GET', 'POST'])
+@app.route("/hello", methods=['GET'])
 def hello():
     #creamos una bariable user_ip que va a tener el valor de la ip que detectamos en el request, 
     #request tiene una propiedad llamdaa request addr que es igual a la ip del usuario
     user_ip = session.get("user_ip")
-    login_form = loginForm()
     username = session.get('username')
     context = {
         "user_ip":user_ip,
         "todos": todos,
-        'login_form': login_form,
         'username': username
     }
-    if login_form.validate_on_submit():
-        username = login_form.username.data
-        session['username'] = username
-        flash('El usuario ' + username + ' se ha registrado con exito')
-        return redirect(url_for('index'))
-
+    
     return render_template("index.html", **context)
 
 if __name__ == "__main__":
