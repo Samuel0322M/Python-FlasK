@@ -4,3 +4,4 @@ flask-wtf
 flask-test
 flask-testing
 blinker
+firebase-admin

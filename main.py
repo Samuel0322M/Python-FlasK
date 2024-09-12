@@ -4,11 +4,12 @@ import unittest
 
 from app import create_app
 from app.forms import loginForm
+from app.firestore_service import get_users, get_todos
 #crear una nueva instancia de flask declaramos una variable llamada app y mandar llamar la clase flask para crear una nueva instancia
 
 app = create_app()
 
-todos = ["Comprar chaqueta", "Sonic Frontiers", "Mando xbox"]
+
 
 
 @app.cli.command()
@@ -46,10 +47,16 @@ def hello():
     username = session.get('username')
     context = {
         "user_ip":user_ip,
-        "todos": todos,
+        "todos": get_todos(user_id=username),
         'username': username
     }
     
+    users = get_users()
+
+    for user in users:
+        print(user.id)
+        print(user.to_dict()['password'])
+
     return render_template("index.html", **context)
 
 if __name__ == "__main__":
