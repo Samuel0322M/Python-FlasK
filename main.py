@@ -1,5 +1,6 @@
 #flask con f minuscula es la extension, Flask es la clase que nos permite crear instancias de flask
 from flask import request, make_response, redirect, render_template, session, url_for, flash, abort, redirect
+from flask_login import login_required, current_user
 import unittest
 
 from app import create_app
@@ -8,8 +9,6 @@ from app.firestore_service import get_users, get_todos
 #crear una nueva instancia de flask declaramos una variable llamada app y mandar llamar la clase flask para crear una nueva instancia
 
 app = create_app()
-
-
 
 
 @app.cli.command()
@@ -40,22 +39,18 @@ def index():
     return response
 
 @app.route("/hello", methods=['GET'])
+@login_required
 def hello():
     #creamos una bariable user_ip que va a tener el valor de la ip que detectamos en el request, 
     #request tiene una propiedad llamdaa request addr que es igual a la ip del usuario
     user_ip = session.get("user_ip")
-    username = session.get('username')
+    username = current_user.id
     context = {
         "user_ip":user_ip,
         "todos": get_todos(user_id=username),
         'username': username
     }
     
-    users = get_users()
-
-    for user in users:
-        print(user.id)
-        print(user.to_dict()['password'])
 
     return render_template("index.html", **context)
 
