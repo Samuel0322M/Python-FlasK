@@ -9,15 +9,22 @@
     {% if username %}
         <h1>Bienvenido  {{username | capitalize  }} </h1>
     {% endif %}
+
     {% if user_ip %}
     <h2>Hola jugador tu ip es {{ user_ip }}</h2>
     {% else %}
     <a href="{{ url_for('index') }}">Ir a inicio</a>
     {% endif %}
+
+        <div class="container">
+           <h2>Crea un nuevo To Do</h2> 
+
+           {{ wtf.quick_form(todo_form) }}
+        </div>
         <br>
-        <ul>
+    <ul class="list-group">
         {% for todo in todos %}
-           {{ macro.render_todo(todo) }}
-            {% endfor %}
-        </ul>
+            {{ macro.render_todo(todo, delete_form) }}
+        {% endfor %}
+    </ul>
 {% endblock %}
